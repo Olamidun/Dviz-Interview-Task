@@ -35,13 +35,13 @@ class VehicleInfoClass:
         browser = webdriver.Chrome(ChromeDriverManager().install(), options=options) # class that install chromedriver. ChromeDriverManager().install() ensures the latest version of the chrome driver is installed
         browser.maximize_window() # This maximizes the browser window to full screen
         browser.get(url)
-        browser.set_page_load_timeout(15) # If the page does not load within the value passed into the function, it returns a timeout error.
+        browser.set_page_load_timeout(30) # If the page does not load within the value passed into the function, it returns a timeout error.
 
 
         '''
         This is to ensure that the zipcode input field has been loaded and can be clicked before we attempt to find the input field. We are getting the input field because we need to pass in our own zipcode.
         '''
-        WebDriverWait(browser, 15).until(EC.element_to_be_clickable((By.NAME, 'zip')))
+        WebDriverWait(browser, 30).until(EC.element_to_be_clickable((By.NAME, 'zip')))
         zipcode_form = browser.find_element_by_name('zip') # this finds the zipcode input field
 
         '''
@@ -67,7 +67,7 @@ class VehicleInfoClass:
                 We are getting each car in the car listing page and then clicking on it. We are doing this by making use of the xpath of the anchor tag, this is so we can click on it and then it takes us to the car details page. This is where I am making use of the count variable I declared above. I am declaring the WevDriverWait to wait for the element that houses the car name to be located by the webdriver before it continue scraping, this is because it some times take a while to load.
 
                 '''
-                WebDriverWait(browser, 15).until(EC.presence_of_element_located((By.XPATH, f"/html/body/div[1]/div/main/div[3]/div[1]/div[1]/div/ul/li[{str(count)}]/div/div[2]/div/h2/a")))
+                WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.XPATH, f"/html/body/div[1]/div/main/div[3]/div[1]/div[1]/div/ul/li[{str(count)}]/div/div[2]/div/h2/a")))
                 car = browser.find_element_by_xpath(f"/html/body/div[1]/div/main/div[3]/div[1]/div[1]/div/ul/li[{str(count)}]/div/div[2]/div/h2/a").click()
 
                 # car_name_xpath = '//div[@name='overview'/h1'
@@ -107,7 +107,7 @@ class VehicleInfoClass:
 
                 url = f'https://www.edmunds.com/cars-for-sale-by-owner/'
                 browser.get(url)
-                browser.set_page_load_timeout(15)
+                browser.set_page_load_timeout(30)
                 count += 1 # This increases the count by 1 so selenium knows to click on the next car
                 
             except Exception as e:
