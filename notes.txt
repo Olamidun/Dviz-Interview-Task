@@ -1,5 +1,0 @@
-first xpath = /html/body/div[1]/div/main/div[3]/div[1]/div[1]/div/ul/li[1]/div/div[2]/div/h2/a
-
-second xpath = /html/body/div[1]/div/main/div[3]/div[1]/div[1]/div/ul/li[2]/div/div[2]/div/h2/a
-
-third xpath = /html/body/div[1]/div/main/div[3]/div[1]/div[1]/div/ul/li[3]/div/div[2]/div/h2/a
